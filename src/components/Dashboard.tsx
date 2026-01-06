@@ -57,7 +57,7 @@ export default function Dashboard() {
       'Fev': "Page B concerne les robes pour femmes",
       'Mas': "Page C concerne les sacs pour femmes",
       'Avl': "Page D concerne les articles ménagers",
-      'Mas': "Page E concerne l'alimentation",
+      'Mai': "Page E concerne l'alimentation",
       'Jun': "Page F concerne l'alimentation pour bébés",
       'Jue': "Page G concerne l'alimentation",
       'Aut': "Page A concerne les vêtements pour hommes",
@@ -151,7 +151,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Latest Invoices */}
         <div className="bg-white p-6 rounded-lg shadow-sm">
           <h2 className="text-xl font-bold text-gray-900 mb-6">
             Dernières factures

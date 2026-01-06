@@ -5,6 +5,7 @@ import Sidebar from '@/components/Sidebar';
 import Dashboard from '@/components/Dashboard';
 import Invoices from '@/components/Invoices';
 import Customers from '@/components/Customers';
+import Product from '@/components/Product';
 
 export default function Page() {
   const [activeMenu, setActiveMenu] = useState('dashboard');
@@ -17,6 +18,7 @@ export default function Page() {
         {activeMenu === 'dashboard' && <Dashboard />}
         {activeMenu === 'invoices' && <Invoices />}
         {activeMenu === 'customers' && <Customers />}
+        {activeMenu === 'Product' && <Product/>}
       </div>
     </div>
   );
