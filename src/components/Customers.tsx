@@ -54,7 +54,6 @@ export default function Customers() {
     },
   ])
 
-  
   const filteredCustomers = useMemo(() => {
     return customers.filter(c =>
       c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -62,13 +61,11 @@ export default function Customers() {
     )
   }, [searchQuery, customers])
 
-
   const totalClients = customers.length
   const activeClients = customers.filter(c => c.status === "Active").length
   const totalRevenue = customers.reduce((sum, c) => sum + c.totalAmount, 0)
   const averageRevenue = totalClients ? totalRevenue / totalClients : 0
 
- 
   const addCustomer = () => {
     if (!formData.name || !formData.email) return
 
@@ -100,7 +97,6 @@ export default function Customers() {
     setShowForm(false)
   }
 
- 
   const deleteCustomer = (id: string) => {
     setCustomers(prev => prev.filter(c => c.id !== id))
   }
@@ -174,6 +170,7 @@ export default function Customers() {
             >
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>
+              <option value="Neutre">Neutre</option>
             </select>
           </div>
 
@@ -188,7 +185,6 @@ export default function Customers() {
         </div>
       )}
 
-      
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         <Stat title="Total clients" value={totalClients} />
         <Stat title="Clients actifs" value={activeClients} />
@@ -196,7 +192,6 @@ export default function Customers() {
         <Stat title="Moyenne/client" value={`${averageRevenue.toLocaleString()} Fcf`} />
       </div>
 
-      
       <div className="relative max-w-md mb-8">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
         <input
@@ -253,7 +248,6 @@ export default function Customers() {
     </div>
   )
 }
-
 
 const Stat = ({ title, value }: { title: string; value: any }) => (
   <div className="bg-white p-6 rounded-lg shadow">
