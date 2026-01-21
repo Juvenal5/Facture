@@ -1,14 +1,5 @@
-// import { NextResponse } from 'next/server';
-// import prisma from '@/app/lib/prisma';
-
-// export async function GET() {
-//   const users = await prisma.user.findMany();
-//   return NextResponse.json(users);
-// }
-
-
 import { NextResponse } from 'next/server';
-import prisma from '@/app/lib/prisma';
+import { prisma } from '@/app/lib/prisma';
 
 // GET : récupérer tous les users
 export async function GET() {
@@ -44,4 +35,3 @@ export async function DELETE(req: Request) {
 
   return NextResponse.json({ success: true });
 }
-
