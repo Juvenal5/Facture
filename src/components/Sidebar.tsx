@@ -4,9 +4,10 @@ import { Home, FileText, Users, LogOut, TrendingUp, Inbox } from 'lucide-react';
 interface SidebarProps { 
   activeMenu: string;
   setActiveMenu: (menu: string) => void;
+  onLogout: () => void;
 }
 
-export default function Sidebar({ activeMenu, setActiveMenu }: SidebarProps) {
+export default function Sidebar({ activeMenu, setActiveMenu, onLogout }: SidebarProps) {
   return (
     <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
       {/* Logo */}
@@ -61,11 +62,15 @@ export default function Sidebar({ activeMenu, setActiveMenu }: SidebarProps) {
 
       {/* Sign Out */}
       <div className="p-4 border-t border-gray-200">
-        <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+        <button 
+          onClick={onLogout}
+          className="w-full flex items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+        >
           <LogOut size={20} />
-          <span className="font-medium">Se déconnecté</span>
+          <span className="font-medium">Se déconnecter</span>
         </button>
       </div>
     </div>
   );
 }
+
