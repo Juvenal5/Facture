@@ -7,6 +7,8 @@ import Invoices from '@/components/Invoices';
 import Customers from '@/components/Customers';
 import Product from '@/components/Product';
 import Pageconnexion from '@/components/Pageconnexion';
+import Transaction from '@/components/Transaction';
+import Budget from '@/components/Budget';
 
 export default function Page() {
   const [activeMenu, setActiveMenu] = useState('dashboard');
@@ -64,6 +66,8 @@ export default function Page() {
         {activeMenu === 'invoices' && <Invoices />}
         {activeMenu === 'customers' && <Customers />}
         {activeMenu === 'Product' && <Product />}
+        {activeMenu === 'Transaction' && <Transaction />}
+        {activeMenu === 'Budget' && <Budget />}
       </div>
     </div>
   );
