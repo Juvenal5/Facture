@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface PageconnexionProps {
@@ -23,59 +23,60 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
 
   const handleLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const formData = new FormData(e.currentTarget);
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
-    
+
     console.log('Connexion:', { email, password });
-    
-    if (email && password) {
-      // Fermer le modal
-      setShowLoginModal(false);
-      
-      // Navigation vers la page d'accueil
-      router.push('/accueil');
-      
-      // Appeler le callback si fourni
-      if (onAuthSuccess) {
-        onAuthSuccess();
-      }
+
+    if (!email || !password) {
+      alert('Veuillez remplir tous les champs.');
+      return;
     }
+
+    // Fermer le modal
+    setShowLoginModal(false);
+
+    // Navigation vers la page d'accueil
+    router.push('/accueil');
+
+    // Appeler le callback si fourni
+    onAuthSuccess?.();
   };
 
   const handleSignupSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const formData = new FormData(e.currentTarget);
-    
+
     const password = formData.get('password') as string;
     const confirmPassword = formData.get('confirmPassword') as string;
-    
+
     if (password !== confirmPassword) {
       alert('Les mots de passe ne correspondent pas!');
       return;
     }
-    
+
     const userData: UserData = {
       nom: formData.get('nom') as string,
       prenom: formData.get('prenom') as string,
       telephone: formData.get('telephone') as string,
       dateNaissance: formData.get('dateNaissance') as string,
       email: formData.get('email') as string,
-      password: password
+      password,
     };
-    
+
     console.log('Inscription:', userData);
-    
+
     // Fermer le modal
     setShowSignupModal(false);
-    
+
     // Navigation vers la page d'accueil
     router.push('/accueil');
-    
+
     // Appeler le callback si fourni
-    if (onAuthSuccess) {
-      onAuthSuccess();
-    }
+    onAuthSuccess?.();
   };
 
   return (
@@ -128,7 +129,7 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
             </span>
           </h1>
           <p className="text-xl text-slate-600 mb-12 max-w-2xl leading-relaxed mx-auto">
-            Gérez vos finances intelligemment. Suivez vos investissements, analysez vos dépenses 
+            Gérez vos finances intelligemment. Suivez vos investissements, analysez vos dépenses
             et prenez des décisions éclairées avec notre plateforme intuitive et sécurisée.
           </p>
 
@@ -161,7 +162,10 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
 
             <form onSubmit={handleLoginSubmit} className="space-y-6">
               <div>
-                <label htmlFor="login-email" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label
+                  htmlFor="login-email"
+                  className="block text-sm font-semibold text-slate-700 mb-2"
+                >
                   Entrez votre email
                 </label>
                 <input
@@ -175,7 +179,10 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
               </div>
 
               <div>
-                <label htmlFor="login-password" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label
+                  htmlFor="login-password"
+                  className="block text-sm font-semibold text-slate-700 mb-2"
+                >
                   Votre mot de passe
                 </label>
                 <input
@@ -193,7 +200,10 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
                   <input type="checkbox" className="w-4 h-4 rounded" />
                   Se souvenir de moi
                 </label>
-                <a href="#" className="text-sm font-semibold text-emerald-600 hover:text-emerald-700">
+                <a
+                  href="#"
+                  className="text-sm font-semibold text-emerald-600 hover:text-emerald-700"
+                >
                   Mot de passe oublié ?
                 </a>
               </div>
@@ -255,7 +265,10 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
                   />
                 </div>
                 <div>
-                  <label htmlFor="prenom" className="block text-sm font-semibold text-slate-700 mb-2">
+                  <label
+                    htmlFor="prenom"
+                    className="block text-sm font-semibold text-slate-700 mb-2"
+                  >
                     Prénom
                   </label>
                   <input
@@ -272,7 +285,10 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
               {/* Téléphone et Date de naissance */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="telephone" className="block text-sm font-semibold text-slate-700 mb-2">
+                  <label
+                    htmlFor="telephone"
+                    className="block text-sm font-semibold text-slate-700 mb-2"
+                  >
                     Numéro de téléphone
                   </label>
                   <input
@@ -285,7 +301,10 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
                   />
                 </div>
                 <div>
-                  <label htmlFor="dateNaissance" className="block text-sm font-semibold text-slate-700 mb-2">
+                  <label
+                    htmlFor="dateNaissance"
+                    className="block text-sm font-semibold text-slate-700 mb-2"
+                  >
                     Date de naissance
                   </label>
                   <input
@@ -300,7 +319,10 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
 
               {/* Email */}
               <div>
-                <label htmlFor="signup-email" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label
+                  htmlFor="signup-email"
+                  className="block text-sm font-semibold text-slate-700 mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -315,7 +337,10 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
 
               {/* Mot de passe */}
               <div>
-                <label htmlFor="signup-password" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label
+                  htmlFor="signup-password"
+                  className="block text-sm font-semibold text-slate-700 mb-2"
+                >
                   Entrer un mot de passe
                 </label>
                 <input
@@ -330,7 +355,10 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
 
               {/* Confirmer mot de passe */}
               <div>
-                <label htmlFor="confirm-password" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label
+                  htmlFor="confirm-password"
+                  className="block text-sm font-semibold text-slate-700 mb-2"
+                >
                   Confirmer le mot de passe
                 </label>
                 <input
@@ -393,19 +421,32 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
 
 // 'use client';
 
-// import { useState } from 'react';
+// import { useState, FormEvent } from 'react';
 // import { useRouter } from 'next/navigation';
 
-// export default function Pageconnexion({ onAuthSuccess }) {
-//   const [showLoginModal, setShowLoginModal] = useState(false);
-//   const [showSignupModal, setShowSignupModal] = useState(false);
+// interface PageconnexionProps {
+//   onAuthSuccess?: () => void;
+// }
+
+// interface UserData {
+//   nom: string;
+//   prenom: string;
+//   telephone: string;
+//   dateNaissance: string;
+//   email: string;
+//   password: string;
+// }
+
+// export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
+//   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
+//   const [showSignupModal, setShowSignupModal] = useState<boolean>(false);
 //   const router = useRouter();
 
-//   const handleLoginSubmit = (e) => {
+//   const handleLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
 //     e.preventDefault();
 //     const formData = new FormData(e.currentTarget);
-//     const email = formData.get('email');
-//     const password = formData.get('password');
+//     const email = formData.get('email') as string;
+//     const password = formData.get('password') as string;
     
 //     console.log('Connexion:', { email, password });
     
@@ -423,24 +464,24 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
 //     }
 //   };
 
-//   const handleSignupSubmit = (e) => {
+//   const handleSignupSubmit = (e: FormEvent<HTMLFormElement>) => {
 //     e.preventDefault();
 //     const formData = new FormData(e.currentTarget);
     
-//     const password = formData.get('password');
-//     const confirmPassword = formData.get('confirmPassword');
+//     const password = formData.get('password') as string;
+//     const confirmPassword = formData.get('confirmPassword') as string;
     
 //     if (password !== confirmPassword) {
 //       alert('Les mots de passe ne correspondent pas!');
 //       return;
 //     }
     
-//     const userData = {
-//       nom: formData.get('nom'),
-//       prenom: formData.get('prenom'),
-//       telephone: formData.get('telephone'),
-//       dateNaissance: formData.get('dateNaissance'),
-//       email: formData.get('email'),
+//     const userData: UserData = {
+//       nom: formData.get('nom') as string,
+//       prenom: formData.get('prenom') as string,
+//       telephone: formData.get('telephone') as string,
+//       dateNaissance: formData.get('dateNaissance') as string,
+//       email: formData.get('email') as string,
 //       password: password
 //     };
     
