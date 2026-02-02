@@ -26,7 +26,7 @@ export default function Sidebar({
   return (
     <div className="w-64 bg-white border-r border-gray-200 flex flex-col h-screen sticky top-0">
       {/* Logo */}
-      <div className="bg-blue-600 p-6">
+      <div className="bg-green-800 p-6">
         <div className="flex items-center gap-2 text-white">
           <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
             <PieChart size={20} className="text-blue-600" />
@@ -42,7 +42,7 @@ export default function Sidebar({
           onClick={() => setActiveMenu("dashboard")}
           className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
             activeMenu === "dashboard"
-              ? "bg-blue-100 text-blue-600"
+              ? "bg-green-100 text-green-600"
               : "text-gray-700 hover:bg-gray-50"
           }`}
         >
@@ -55,7 +55,7 @@ export default function Sidebar({
           onClick={() => setActiveMenu("invoices")}
           className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
             activeMenu === "invoices"
-              ? "bg-blue-100 text-blue-600"
+              ? "bg-green-100 text-green-600"
               : "text-gray-700 hover:bg-gray-50"
           }`}
         >
@@ -68,7 +68,7 @@ export default function Sidebar({
           onClick={() => setActiveMenu("customers")}
           className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
             activeMenu === "customers"
-              ? "bg-blue-100 text-blue-600"
+              ? "bg-green-100 text-green-600"
               : "text-gray-700 hover:bg-gray-50"
           }`}
         >
@@ -81,7 +81,7 @@ export default function Sidebar({
           onClick={() => setActiveMenu("Product")}
           className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
             activeMenu === "Product"
-              ? "bg-blue-100 text-blue-600"
+              ? "bg-green-100 text-green-600"
               : "text-gray-700 hover:bg-gray-50"
           }`}
         >
@@ -94,7 +94,7 @@ export default function Sidebar({
           onClick={() => setActiveMenu("Transaction")}
           className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
             activeMenu === "Transaction"
-              ? "bg-blue-100 text-blue-600"
+              ? "bg-green-100 text-green-600"
               : "text-gray-700 hover:bg-gray-50"
           }`}
         >
@@ -107,7 +107,7 @@ export default function Sidebar({
           onClick={() => setActiveMenu("Budget")}
           className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
             activeMenu === "Budget"
-              ? "bg-blue-100 text-blue-600"
+              ? "bg-green-100 text-green-600"
               : "text-gray-700 hover:bg-gray-50"
           }`}
         >

@@ -100,7 +100,7 @@ export default function Invoices() {
         <h1 className="text-4xl font-bold">FACTURES</h1>
         <button
           onClick={() => setShowForm(true)}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg flex items-center gap-2"
+          className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg flex items-center gap-2"
         >
           Créer une facture
           <Plus size={20} />
