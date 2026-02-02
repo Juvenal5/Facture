@@ -24,7 +24,7 @@ export default function Sidebar({
   onLogout,
 }: SidebarProps) {
   return (
-    <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
+    <div className="w-64 bg-white border-r border-gray-200 flex flex-col h-screen sticky top-0">
       {/* Logo */}
       <div className="bg-blue-600 p-6">
         <div className="flex items-center gap-2 text-white">
@@ -36,7 +36,7 @@ export default function Sidebar({
       </div>
 
       {/* Menu Items */}
-      <nav className="flex-1 p-4">
+      <nav className="flex-1 p-4 overflow-y-auto">
         {/* Dashboard */}
         <button
           onClick={() => setActiveMenu("dashboard")}
