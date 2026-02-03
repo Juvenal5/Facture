@@ -82,8 +82,8 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden flex flex-col">
       {/* Ornements décoratifs */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-emerald-200/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-amber-200/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 left-10 w-96 h-96 bg-emerald-200/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-amber-200/20 rounded-full blur-3xl" />
 
       {/* Header */}
       <header className="relative z-10 max-w-7xl w-full mx-auto px-6 pt-8 pb-4">
@@ -153,6 +153,7 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
             <button
               onClick={() => setShowLoginModal(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-2xl"
+              aria-label="Fermer"
             >
               ×
             </button>
@@ -200,12 +201,13 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
                   <input type="checkbox" className="w-4 h-4 rounded" />
                   Se souvenir de moi
                 </label>
-                <a
-                  href="#"
+                <button
+                  type="button"
+                  onClick={(e) => e.preventDefault()}
                   className="text-sm font-semibold text-emerald-600 hover:text-emerald-700"
                 >
                   Mot de passe oublié ?
-                </a>
+                </button>
               </div>
 
               <button
@@ -220,6 +222,7 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
               <p className="text-sm text-slate-600">
                 Pas encore de compte ?{' '}
                 <button
+                  type="button"
                   onClick={() => {
                     setShowLoginModal(false);
                     setShowSignupModal(true);
@@ -241,6 +244,7 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
             <button
               onClick={() => setShowSignupModal(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-2xl"
+              aria-label="Fermer"
             >
               ×
             </button>
@@ -375,14 +379,22 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
               <div className="flex items-start gap-2">
                 <input type="checkbox" required className="w-4 h-4 mt-1 rounded" />
                 <label className="text-sm text-slate-600">
-                  J'accepte les{' '}
-                  <a href="#" className="text-amber-600 hover:text-amber-700 font-semibold">
-                    conditions d'utilisation
-                  </a>{' '}
+                  J&apos;accepte les{' '}
+                  <button
+                    type="button"
+                    onClick={(e) => e.preventDefault()}
+                    className="text-amber-600 hover:text-amber-700 font-semibold"
+                  >
+                    conditions d&apos;utilisation
+                  </button>{' '}
                   et la{' '}
-                  <a href="#" className="text-amber-600 hover:text-amber-700 font-semibold">
+                  <button
+                    type="button"
+                    onClick={(e) => e.preventDefault()}
+                    className="text-amber-600 hover:text-amber-700 font-semibold"
+                  >
                     politique de confidentialité
-                  </a>
+                  </button>
                 </label>
               </div>
 
@@ -398,6 +410,7 @@ export default function Pageconnexion({ onAuthSuccess }: PageconnexionProps) {
               <p className="text-sm text-slate-600">
                 Vous avez déjà un compte ?{' '}
                 <button
+                  type="button"
                   onClick={() => {
                     setShowSignupModal(false);
                     setShowLoginModal(true);
